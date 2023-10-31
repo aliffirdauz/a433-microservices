@@ -2,10 +2,10 @@ version: '2'  # Versi Docker Compose yang digunakan
 
 services:  # Mendefinisikan layanan yang akan dijalankan
   item-app:  # Layanan pertama bernama "item-app"
-    image: docker.pkg.github.com/aliffirdauz/a433-microservices/tree/proyek-pertama/item-app:v1
+    image: ghcr.io/aliffirdauz/a433-microservices/tree/proyek-pertama/item-app:v1
     # Menggunakan Docker image dari GitHub Packages, ganti dengan URL Docker image yang sesuai
     ports:
-      - "80:80"
+      - "8080:8080"
     # Memetakan port 80 dari host ke port 80 di kontainer
     depends_on:
       - item-db

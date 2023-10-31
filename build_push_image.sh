@@ -16,14 +16,14 @@ docker build -t "$image_name:$image_tag" .
 docker images
 
 # Langkah 3: Mengubah nama image sesuai format GitHub Packages
-new_image_name="docker.pkg.github.com/$github_package/$image_name"
+new_image_name="ghcr.io/$github_package/$image_name"
 new_image_tag="$new_image_name:$image_tag"
 
 docker tag "$image_name:$image_tag" "$new_image_tag"
 
 # Langkah 4: Login ke GitHub Packages (menggunakan personal access token)
 # Gantilah dengan personal access token GitHub Anda
-docker login docker.pkg.github.com -u aliffirdauz -p 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
+docker login ghcr.io -u aliffirdauz -p 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
 
 # Langkah 5: Mengunggah image ke GitHub Packages
 docker push "$new_image_tag"
