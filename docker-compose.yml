@@ -1,0 +1,26 @@
+version: '2'  # Versi Docker Compose yang digunakan
+
+services:  # Mendefinisikan layanan yang akan dijalankan
+  item-app:  # Layanan pertama bernama "item-app"
+    image: docker.pkg.github.com/aliffirdauz/a433-microservices/tree/proyek-pertama/item-app:v1
+    # Menggunakan Docker image dari GitHub Packages, ganti dengan URL Docker image yang sesuai
+    ports:
+      - "80:80"
+    # Memetakan port 80 dari host ke port 80 di kontainer
+    depends_on:
+      - item-db
+    # Menentukan bahwa layanan "item-app" hanya akan dijalankan setelah "item-db" diluncurkan
+    restart: always
+    # Kebijakan restart: Selalu mencoba menjalankan ulang kontainer jika gagal atau berhenti
+
+  item-db:  # Layanan kedua bernama "item-db"
+    image: mongo:3
+    # Menggunakan Docker image MongoDB versi 3 dari Docker Hub
+    volumes:
+      - app-db:/data/db
+    # Menggunakan volume bernama "app-db" untuk menyimpan data MongoDB
+    restart: always
+    # Kebijakan restart: Selalu mencoba menjalankan ulang kontainer jika gagal atau berhenti
+
+volumes:  # Mendefinisikan volume yang akan digunakan
+  app-db:  # Volume bernama "app-db" untuk digunakan dalam layanan "item-db"
