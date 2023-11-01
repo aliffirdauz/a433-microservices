@@ -5,7 +5,7 @@ services:  # Mendefinisikan layanan yang akan dijalankan
     image: ghcr.io/aliffirdauz/a433-microservices/tree/proyek-pertama/item-app:v1
     # Menggunakan Docker image dari GitHub Packages, ganti dengan URL Docker image yang sesuai
     ports:
-      - "8080:8080"
+      - "80:8080"
     # Memetakan port 80 dari host ke port 80 di kontainer
     depends_on:
       - item-db
